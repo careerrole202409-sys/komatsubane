@@ -1,470 +1,453 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.7px Arial; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「ゴールデン・サンプル」問題を回避せよ：試作から量産まで「同一設備」で製造する品質哲学 - 小松ばね工業株式会社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #2d3748;
+            background-color: #f7fafc;
+        }
+
+        header {
+            background: #1a1a2e;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .breadcrumb {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .breadcrumb a {
+            color: #4a5568;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: #cbd5e0;
+        }
+
+        .article-header {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .featured-image {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .article-content {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            color: #1a202c;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #2c3e50;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin: 2rem 0 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-section {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #2c3e50;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #95a5a6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .article-title {
+                font-size: 1.8rem;
+            }
+            .article-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="ja"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;title&gt;「ゴールデン・サンプル」問題を回避せよ：試作から量産まで「同一設備」で製造する品質哲学 - 小松ばね工業株式会社&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;style&gt;</span></p>
-<p class="p1"><span class="s1">        * {</span></p>
-<p class="p1"><span class="s1">            margin: 0;</span></p>
-<p class="p1"><span class="s1">            padding: 0;</span></p>
-<p class="p1"><span class="s1">            box-sizing: border-box;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        body {</span></p>
-<p class="p1"><span class="s1">            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;</span></p>
-<p class="p1"><span class="s1">            line-height: 1.8;</span></p>
-<p class="p1"><span class="s1">            color: #2d3748;</span></p>
-<p class="p1"><span class="s1">            background-color: #f7fafc;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        header {</span></p>
-<p class="p1"><span class="s1">            background: #1a1a2e;</span></p>
-<p class="p1"><span class="s1">            color: white;</span></p>
-<p class="p1"><span class="s1">            padding: 1rem 0;</span></p>
-<p class="p1"><span class="s1">            box-shadow: 0 2px 8px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1">            position: sticky;</span></p>
-<p class="p1"><span class="s1">            top: 0;</span></p>
-<p class="p1"><span class="s1">            z-index: 1000;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .header-container {</span></p>
-<p class="p1"><span class="s1">            max-width: 1200px;</span></p>
-<p class="p1"><span class="s1">            margin: 0 auto;</span></p>
-<p class="p1"><span class="s1">            padding: 0 2rem;</span></p>
-<p class="p1"><span class="s1">            display: flex;</span></p>
-<p class="p1"><span class="s1">            justify-content: space-between;</span></p>
-<p class="p1"><span class="s1">            align-items: center;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .logo {</span></p>
-<p class="p1"><span class="s1">            font-size: 1.8rem;</span></p>
-<p class="p1"><span class="s1">            font-weight: 700;</span></p>
-<p class="p1"><span class="s1">            text-decoration: none;</span></p>
-<p class="p1"><span class="s1">            color: white;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        nav ul {</span></p>
-<p class="p1"><span class="s1">            list-style: none;</span></p>
-<p class="p1"><span class="s1">            display: flex;</span></p>
-<p class="p1"><span class="s1">            gap: 2rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        nav a {</span></p>
-<p class="p1"><span class="s1">            color: white;</span></p>
-<p class="p1"><span class="s1">            text-decoration: none;</span></p>
-<p class="p1"><span class="s1">            font-weight: 500;</span></p>
-<p class="p1"><span class="s1">            transition: opacity 0.3s;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        nav a:hover {</span></p>
-<p class="p1"><span class="s1">            opacity: 0.8;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .breadcrumb {</span></p>
-<p class="p1"><span class="s1">            max-width: 900px;</span></p>
-<p class="p1"><span class="s1">            margin: 2rem auto 0;</span></p>
-<p class="p1"><span class="s1">            padding: 0 2rem;</span></p>
-<p class="p1"><span class="s1">            display: flex;</span></p>
-<p class="p1"><span class="s1">            gap: 0.5rem;</span></p>
-<p class="p1"><span class="s1">            flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1">            font-size: 0.9rem;</span></p>
-<p class="p1"><span class="s1">            color: #718096;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .breadcrumb a {</span></p>
-<p class="p1"><span class="s1">            color: #4a5568;</span></p>
-<p class="p1"><span class="s1">            text-decoration: none;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .breadcrumb span {</span></p>
-<p class="p1"><span class="s1">            color: #cbd5e0;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-header {</span></p>
-<p class="p1"><span class="s1">            max-width: 900px;</span></p>
-<p class="p1"><span class="s1">            margin: 2rem auto;</span></p>
-<p class="p1"><span class="s1">            padding: 0 2rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-category {</span></p>
-<p class="p1"><span class="s1">            display: inline-block;</span></p>
-<p class="p1"><span class="s1">            background: #2c3e50;</span></p>
-<p class="p1"><span class="s1">            color: white;</span></p>
-<p class="p1"><span class="s1">            padding: 0.4rem 1rem;</span></p>
-<p class="p1"><span class="s1">            border-radius: 20px;</span></p>
-<p class="p1"><span class="s1">            font-size: 0.85rem;</span></p>
-<p class="p1"><span class="s1">            font-weight: 700;</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 1.5rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-title {</span></p>
-<p class="p1"><span class="s1">            font-size: 2.5rem;</span></p>
-<p class="p1"><span class="s1">            font-weight: 700;</span></p>
-<p class="p1"><span class="s1">            color: #1a202c;</span></p>
-<p class="p1"><span class="s1">            line-height: 1.3;</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 1.5rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-meta {</span></p>
-<p class="p1"><span class="s1">            display: flex;</span></p>
-<p class="p1"><span class="s1">            gap: 2rem;</span></p>
-<p class="p1"><span class="s1">            flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1">            padding: 1.5rem 0;</span></p>
-<p class="p1"><span class="s1">            border-bottom: 2px solid #e2e8f0;</span></p>
-<p class="p1"><span class="s1">            color: #718096;</span></p>
-<p class="p1"><span class="s1">            font-size: 0.95rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .featured-image {</span></p>
-<p class="p1"><span class="s1">            max-width: 900px;</span></p>
-<p class="p1"><span class="s1">            margin: 2rem auto;</span></p>
-<p class="p1"><span class="s1">            padding: 0 2rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .featured-image img {</span></p>
-<p class="p1"><span class="s1">            width: 100%;</span></p>
-<p class="p1"><span class="s1">            height: auto;</span></p>
-<p class="p1"><span class="s1">            border-radius: 12px;</span></p>
-<p class="p1"><span class="s1">            box-shadow: 0 4px 12px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-content {</span></p>
-<p class="p1"><span class="s1">            max-width: 900px;</span></p>
-<p class="p1"><span class="s1">            margin: 3rem auto;</span></p>
-<p class="p1"><span class="s1">            padding: 3rem;</span></p>
-<p class="p1"><span class="s1">            background: white;</span></p>
-<p class="p1"><span class="s1">            border-radius: 12px;</span></p>
-<p class="p1"><span class="s1">            box-shadow: 0 2px 8px rgba(0,0,0,0.05);</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-content h2 {</span></p>
-<p class="p1"><span class="s1">            font-size: 2rem;</span></p>
-<p class="p1"><span class="s1">            color: #1a202c;</span></p>
-<p class="p1"><span class="s1">            margin: 2.5rem 0 1.5rem;</span></p>
-<p class="p1"><span class="s1">            padding-bottom: 0.5rem;</span></p>
-<p class="p1"><span class="s1">            border-bottom: 3px solid #2c3e50;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-content h3 {</span></p>
-<p class="p1"><span class="s1">            font-size: 1.5rem;</span></p>
-<p class="p1"><span class="s1">            color: #2c3e50;</span></p>
-<p class="p1"><span class="s1">            margin: 2rem 0 1rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-content p {</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 1.5rem;</span></p>
-<p class="p1"><span class="s1">            font-size: 1.05rem;</span></p>
-<p class="p1"><span class="s1">            line-height: 1.9;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-content ul, .article-content ol {</span></p>
-<p class="p1"><span class="s1">            margin: 1.5rem 0 1.5rem 2rem;</span></p>
-<p class="p1"><span class="s1">            font-size: 1.05rem;</span></p>
-<p class="p1"><span class="s1">            line-height: 1.9;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .article-content li {</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 0.75rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .faq-section {</span></p>
-<p class="p1"><span class="s1">            background: #f7fafc;</span></p>
-<p class="p1"><span class="s1">            padding: 2rem;</span></p>
-<p class="p1"><span class="s1">            border-radius: 8px;</span></p>
-<p class="p1"><span class="s1">            margin: 2rem 0;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .faq-item {</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 1.5rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .faq-question {</span></p>
-<p class="p1"><span class="s1">            font-weight: 700;</span></p>
-<p class="p1"><span class="s1">            color: #2c3e50;</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 0.5rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .cta-section {</span></p>
-<p class="p1"><span class="s1">            max-width: 900px;</span></p>
-<p class="p1"><span class="s1">            margin: 4rem auto;</span></p>
-<p class="p1"><span class="s1">            padding: 3rem 2rem;</span></p>
-<p class="p1"><span class="s1">            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);</span></p>
-<p class="p1"><span class="s1">            border-radius: 12px;</span></p>
-<p class="p1"><span class="s1">            text-align: center;</span></p>
-<p class="p1"><span class="s1">            color: white;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .cta-section h2 {</span></p>
-<p class="p1"><span class="s1">            font-size: 2rem;</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 1rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .cta-button {</span></p>
-<p class="p1"><span class="s1">            display: inline-block;</span></p>
-<p class="p1"><span class="s1">            padding: 1rem 2.5rem;</span></p>
-<p class="p1"><span class="s1">            background: white;</span></p>
-<p class="p1"><span class="s1">            color: #2c3e50;</span></p>
-<p class="p1"><span class="s1">            font-weight: 700;</span></p>
-<p class="p1"><span class="s1">            border-radius: 8px;</span></p>
-<p class="p1"><span class="s1">            text-decoration: none;</span></p>
-<p class="p1"><span class="s1">            transition: transform 0.3s;</span></p>
-<p class="p1"><span class="s1">            margin-top: 1rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .cta-button:hover {</span></p>
-<p class="p1"><span class="s1">            transform: translateY(-2px);</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        footer {</span></p>
-<p class="p1"><span class="s1">            background: #2d3748;</span></p>
-<p class="p1"><span class="s1">            color: white;</span></p>
-<p class="p1"><span class="s1">            padding: 3rem 2rem;</span></p>
-<p class="p1"><span class="s1">            margin-top: 4rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .footer-content {</span></p>
-<p class="p1"><span class="s1">            max-width: 1200px;</span></p>
-<p class="p1"><span class="s1">            margin: 0 auto;</span></p>
-<p class="p1"><span class="s1">            display: grid;</span></p>
-<p class="p1"><span class="s1">            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</span></p>
-<p class="p1"><span class="s1">            gap: 2rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .footer-section h3 {</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 1rem;</span></p>
-<p class="p1"><span class="s1">            color: #95a5a6;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .footer-section ul {</span></p>
-<p class="p1"><span class="s1">            list-style: none;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .footer-section li {</span></p>
-<p class="p1"><span class="s1">            margin-bottom: 0.5rem;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .footer-section a {</span></p>
-<p class="p1"><span class="s1">            color: #cbd5e0;</span></p>
-<p class="p1"><span class="s1">            text-decoration: none;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        .footer-bottom {</span></p>
-<p class="p1"><span class="s1">            text-align: center;</span></p>
-<p class="p1"><span class="s1">            margin-top: 2rem;</span></p>
-<p class="p1"><span class="s1">            padding-top: 2rem;</span></p>
-<p class="p1"><span class="s1">            border-top: 1px solid #4a5568;</span></p>
-<p class="p1"><span class="s1">            color: #a0aec0;</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        @media (max-width: 768px) {</span></p>
-<p class="p1"><span class="s1">            .header-container {</span></p>
-<p class="p1"><span class="s1">                flex-direction: column;</span></p>
-<p class="p1"><span class="s1">                gap: 1rem;</span></p>
-<p class="p1"><span class="s1">            }</span></p>
-<p class="p1"><span class="s1">            nav ul {</span></p>
-<p class="p1"><span class="s1">                flex-direction: column;</span></p>
-<p class="p1"><span class="s1">                gap: 0.5rem;</span></p>
-<p class="p1"><span class="s1">                align-items: center;</span></p>
-<p class="p1"><span class="s1">            }</span></p>
-<p class="p1"><span class="s1">            .article-title {</span></p>
-<p class="p1"><span class="s1">                font-size: 1.8rem;</span></p>
-<p class="p1"><span class="s1">            }</span></p>
-<p class="p1"><span class="s1">            .article-content {</span></p>
-<p class="p1"><span class="s1">                padding: 1.5rem;</span></p>
-<p class="p1"><span class="s1">            }</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p1"><span class="s1">    &lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;header&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="header-container"&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;a href="https://www.komatsubane.com/" class="logo"&gt;小松ばね工業株式会社&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;nav&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;ul&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/"&gt;ホーム&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/products/"&gt;製品紹介&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/company/"&gt;会社紹介&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/contact_us/"&gt;お問い合わせ&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/nav&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;div class="breadcrumb"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;a href="https://www.komatsubane.com/"&gt;ホーム&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span&gt;›&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;a href="#"&gt;ブログ&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span&gt;›&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span&gt;品質管理&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;div class="article-header"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="article-category"&gt;品質管理&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;h1 class="article-title"&gt;「ゴールデン・サンプル」問題を回避せよ：試作から量産まで「同一設備」で製造する品質哲学&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="article-meta"&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;span&gt;📅 2025年12月&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;span&gt;⏱️ 読了時間：約8分&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;div class="featured-image"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&amp;h=600&amp;fit=crop" alt="精密製造機械と品質管理"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;article class="article-content"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;&lt;strong&gt;製造業の海外調達における最大の懸念点の一つ、「試作品と量産品の品質乖離」を防ぐための画期的なアプローチについて徹底解説します。小松ばね工業が実践する「試作＝量産」という独自の哲学が、いかにして開発リスクをゼロにし、スムーズな市場投入を実現するのか。その秘密をご紹介します。&lt;/strong&gt;&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;【1分で解説!】量産成功の鍵「同一設備製造」とは? 💡&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;新製品開発において、試作品は完璧だったのに、いざ量産を始めたら不良品ばかり...という経験はありませんか？これを防ぐための最良の方法が、小松ばね工業が実践する「試作段階から量産機を使用する」というアプローチです。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;一般的に試作は、熟練工が手作業や専用の試作機で作ることが多く、これがいわゆる再現不可能な「ゴールデン・サンプル」を生む原因となります。しかし、私たちは違います。試作の段階から、実際に量産で使用する自動成形機と設備を使って製造条件を詰め、品質を作り込みます。これにより、試作でOKが出れば、そのままスムーズに、かつ確実に量産へ移行できるのです。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;この手法が開発リードタイムを劇的に短縮し、コストを削減できる理由を詳しく見ていきましょう。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;なぜ「試作は完璧」なのに「量産」で失敗するのか? 🤔&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;海外のサプライヤーに依頼した際、高品質な試作品（ゴールデン・サンプル)を受け取って安心していたら、納品された量産品の品質がバラバラで使い物にならなかった...。この「試作と量産の壁」は、多くの調達担当者を悩ませる深刻な課題です。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;手作り試作の限界と「再現性」の欠如&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;試作品を作る際、多くのメーカーは「まずは形にすること」を優先し、ハンドメイドや簡易的な試作専用治具を使用します。熟練の職人が手作業で微調整を重ねて作った試作品は、確かにスペック通りの素晴らしい性能を発揮するでしょう。しかし、それは「その一品」に限った話です。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;いざ量産フェーズに入り、高速で稼働する自動機で同じものを作ろうとした瞬間、手作業のような微細な調整が効かなくなり、公差外れや破損といったトラブルが頻発します。これが、再現性のない「ゴールデン・サンプル」が引き起こす典型的な失敗パターンです。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;量産移行時の「再設計」が招くコストと時間の無駄&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;試作機と量産機が異なると、量産開始直前に「量産用の条件出し」を一からやり直す必要があります。場合によっては、量産機に合わせて設計図面そのものを修正しなければならない（手戻り）ことも少なくありません。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;これにより、開発期間が数週間から数ヶ月遅れたり、金型の修正費用が追加で発生したりと、ビジネスチャンスを逃す大きな要因となります。小松ばね工業のアプローチは、この「見えないコスト」を根本から排除するための戦略なのです。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;小松ばね工業の解答：「最初から量産機」でつくる! 🎯&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;私たちは、「試作は量産のリハーサルではない、量産そのものである」と考えています。この哲学こそが、世界中の精密機器メーカーから選ばれ続ける理由です。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;試作段階から「量産と同じ条件」を徹底する理由&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;小松ばね工業では、たとえ1個の試作であっても、将来的に量産を行う予定の自動成形機（コイリングマシンなど）を使用します。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;量産時と同じ機械、同じ治具、同じプログラムを使って試作を行うことで、その時点で「量産時に起こりうる問題」を全て洗い出すことができます。試作段階で量産適格性の確認（バリデーション）が完了しているため、お客様から量産GOのサインが出れば、即座にフル生産を開始できるのです。これは、スピードが命の現代ビジネスにおいて、極めて強力な競争優位性となります。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;600台以上の設備と熟練工が支える柔軟な生産体制&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;この手法を実現できる背景には、私たちが保有する圧倒的な設備力があります。社内には、最新鋭のNC（数値制御）スプリング成形機から、特定の加工に特化したメカ式成形機まで、約600台以上の多種多様な設備が稼働しています。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;さらに、それらの機械を使いこなす熟練の技術者が、社内で独自の治具（ツール）を設計・製作します。「この形状のばねなら、あの機械がベストだ」という判断を瞬時に行い、最適な設備で試作から量産までを一貫して担当する体制が整っているのです。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;具体的な成功事例：精密機器業界での信頼 ✨&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;私たちの「同一設備製造」の哲学は、コンマ数ミリの精度が要求される業界で特に高く評価されています。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;カメラから医療機器へ：大手精密メーカーとの取引実績&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;私たちの技術力のルーツは、カメラのシャッター用ばねにあります。非常に小さなスペースに収まり、かつ正確な動作を何万回も繰り返す耐久性が求められる部品です。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;この分野で培った信頼により、私たちは長年にわたりキヤノングループ様やセイコーグループ様といった、世界をリードする企業の主要パートナーとして選ばれ続けてきました。現在では、その超精密加工技術を応用し、内視鏡やガイドワイヤーといった医療機器分野の重要保安部品も多数手がけています。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;これらの製品は人命に関わるため、品質のバラつきは絶対に許されません。試作段階で量産品質を確立しているからこそ、厳しい医療業界の基準もクリアできるのです。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;海外調達の不安を解消する品質保証体制 ⚙️&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;日本品質をそのまま海外へ。私たちは、物理的な製品だけでなく、安心という価値も提供しています。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;ISO認証と徹底したデータ管理&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;小松ばね工業は、ISO9001およびISO14001を取得しており、国際基準に基づいた厳格な品質管理体制を敷いています。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;試作時に決定した製造パラメーターや検査データは全て記録・保存され、数年後のリピート注文であっても、当時と全く同じ条件で製造することが可能です。これにより、「前回と何かが違う」というトラブルを未然に防ぎます。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h3&gt;「図面通り」を忠実に再現する技術力&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;私たちの誇りは、お客様から頂いた図面を忠実に再現する力です。当たり前のように聞こえるかもしれませんが、ばねは材料のロットや気温によって微妙に反発力が変わる生き物のような製品です。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;私たちは、3Dスキャン三次元座標測定機などの最新検査機器を駆使し、形状、寸法、荷重特性を徹底的に検証します。「図面通りのものが届く」という当たり前の安心を、米国、シンガポールをはじめとする海外のお客様にも変わらずお届けします。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;小松ばね工業の製品開発・試作に関するFAQ 🤝&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="faq-section"&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;div class="faq-item"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;p class="faq-question"&gt;Q1. 試作は本当に1個からでも対応してもらえますか？&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;p&gt;A1. はい、喜んで対応いたします！私たちは「小さなスプリング一個といえども、精密製品の心臓部」という考えを持っています。たった1個の試作であっても、将来の量産を見据えて最適な量産機を選定し、製造いたします。まずは開発段階からお気軽にご相談ください。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">            </span></p>
-<p class="p1"><span class="s1">            &lt;div class="faq-item"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;p class="faq-question"&gt;Q2. 量産機で試作すると、費用が高くなるのでは？&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;p&gt;A2. 一見そう思われがちですが、トータルコストではむしろ安くなるケースが大半です。手作り試作に比べて初期費用は若干かかる場合がありますが、量産移行時の金型修正費や、トラブルによる手戻り工数が不要になるため、製品ライフサイクル全体で見れば大幅なコストダウンと時間短縮につながります。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">            </span></p>
-<p class="p1"><span class="s1">            &lt;div class="faq-item"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;p class="faq-question"&gt;Q3. 海外（米国、シンガポールなど）への発送や取引は可能ですか？&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;p&gt;A3. もちろんです。私たちはインドネシアに現地法人（PT. KOMATSU BANE INDONESIA）を持つなど、海外展開の経験も豊富です。日本本社からの輸出はもちろん、海外拠点との連携も含め、お客様のサプライチェーンに最適な形での納品体制をご提案させていただきます。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;まとめ：リスクのない量産移行でビジネスを加速させよう! 🚀&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;ここまで、小松ばね工業独自の「試作から量産まで同一設備で製造する」という品質哲学について解説してきました。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;ol&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;li&gt;試作と量産の品質乖離（ゴールデン・サンプル問題）を完全回避&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;li&gt;600台以上の豊富な設備で、最適な量産機を最初から選定&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;li&gt;量産移行時の手戻りをなくし、開発リードタイムを劇的に短縮&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;li&gt;キヤノン様やセイコー様など、世界的大手企業との長年の取引実績&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;li&gt;ISO認証に基づく徹底した品質管理とデータ保存&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/ol&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;「日本の高品質な部品を使いたいが、量産時のトラブルが怖い」「開発スピードを上げたい」──そうお考えの皆様にとって、小松ばね工業は最高のパートナーになれると確信しています。私たちは単なる部品メーカーではなく、お客様の製品開発を成功に導くための伴走者です。&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;試作図面ができた段階、あるいは構想段階からでも構いません。まずは私たちにご相談ください。確かな技術と実績で、あなたのビジネスの成功を強力にバックアップします！&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/article&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;div class="cta-section"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;h2&gt;お問い合わせはこちら&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p&gt;ばねの試作・量産に関するご相談・お見積りなど、お気軽にお問い合わせください&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;a href="https://www.komatsubane.com/contact_us/" class="cta-button"&gt;お問い合わせフォームへ&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;footer&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="footer-content"&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;div class="footer-section"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;h3&gt;製品紹介&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;ul&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/products/"&gt;ばねの種類&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/products/"&gt;製品&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/products/"&gt;用途&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;div class="footer-section"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;h3&gt;会社紹介&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;ul&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/company/"&gt;会社概要&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/company/"&gt;設備&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;div class="footer-section"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;h3&gt;情報&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;ul&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/information/"&gt;新着情報&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/recruit/"&gt;求人情報&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;div class="footer-section"&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;h3&gt;お問い合わせ&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;ul&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="tel:03-3743-0231"&gt;TEL: 03-3743-0231（代）&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="tel:03-3743-0235"&gt;FAX: 03-3743-0235&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;〒143-0013&lt;br&gt;東京都大田区大森南5丁目3番18号&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                    &lt;li&gt;&lt;a href="https://www.komatsubane.com/contact_us/"&gt;お問い合わせフォーム&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1">                &lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="footer-bottom"&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;p&gt;&amp;copy; 2025 小松ばね工業株式会社. All rights reserved.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/footer&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+    <header>
+        <div class="header-container">
+            <a href="https://www.komatsubane.com/" class="logo">小松ばね工業株式会社</a>
+            <nav>
+                <ul>
+                    <li><a href="https://www.komatsubane.com/">ホーム</a></li>
+                    <li><a href="https://www.komatsubane.com/products/">製品紹介</a></li>
+                    <li><a href="https://www.komatsubane.com/company/">会社紹介</a></li>
+                    <li><a href="https://www.komatsubane.com/contact_us/">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="https://www.komatsubane.com/">ホーム</a>
+        <span>›</span>
+        <a href="#">ブログ</a>
+        <span>›</span>
+        <span>品質管理</span>
+    </div>
+
+    <div class="article-header">
+        <span class="article-category">品質管理</span>
+        <h1 class="article-title">「ゴールデン・サンプル」問題を回避せよ：試作から量産まで「同一設備」で製造する品質哲学</h1>
+        <div class="article-meta">
+            <span>📅 2025年12月</span>
+            <span>⏱️ 読了時間：約8分</span>
+        </div>
+    </div>
+
+    <div class="featured-image">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&h=600&fit=crop" alt="精密製造機械と品質管理">
+    </div>
+
+    <article class="article-content">
+        <p><strong>製造業の海外調達における最大の懸念点の一つ、「試作品と量産品の品質乖離」を防ぐための画期的なアプローチについて徹底解説します。小松ばね工業が実践する「試作＝量産」という独自の哲学が、いかにして開発リスクをゼロにし、スムーズな市場投入を実現するのか。その秘密をご紹介します。</strong></p>
+
+        <h2>【1分で解説!】量産成功の鍵「同一設備製造」とは? 💡</h2>
+        <p>新製品開発において、試作品は完璧だったのに、いざ量産を始めたら不良品ばかり...という経験はありませんか？これを防ぐための最良の方法が、小松ばね工業が実践する「試作段階から量産機を使用する」というアプローチです。</p>
+        
+        <p>一般的に試作は、熟練工が手作業や専用の試作機で作ることが多く、これがいわゆる再現不可能な「ゴールデン・サンプル」を生む原因となります。しかし、私たちは違います。試作の段階から、実際に量産で使用する自動成形機と設備を使って製造条件を詰め、品質を作り込みます。これにより、試作でOKが出れば、そのままスムーズに、かつ確実に量産へ移行できるのです。</p>
+        
+        <p>この手法が開発リードタイムを劇的に短縮し、コストを削減できる理由を詳しく見ていきましょう。</p>
+
+        <h2>なぜ「試作は完璧」なのに「量産」で失敗するのか? 🤔</h2>
+        <p>海外のサプライヤーに依頼した際、高品質な試作品（ゴールデン・サンプル)を受け取って安心していたら、納品された量産品の品質がバラバラで使い物にならなかった...。この「試作と量産の壁」は、多くの調達担当者を悩ませる深刻な課題です。</p>
+
+        <h3>手作り試作の限界と「再現性」の欠如</h3>
+        <p>試作品を作る際、多くのメーカーは「まずは形にすること」を優先し、ハンドメイドや簡易的な試作専用治具を使用します。熟練の職人が手作業で微調整を重ねて作った試作品は、確かにスペック通りの素晴らしい性能を発揮するでしょう。しかし、それは「その一品」に限った話です。</p>
+        
+        <p>いざ量産フェーズに入り、高速で稼働する自動機で同じものを作ろうとした瞬間、手作業のような微細な調整が効かなくなり、公差外れや破損といったトラブルが頻発します。これが、再現性のない「ゴールデン・サンプル」が引き起こす典型的な失敗パターンです。</p>
+
+        <h3>量産移行時の「再設計」が招くコストと時間の無駄</h3>
+        <p>試作機と量産機が異なると、量産開始直前に「量産用の条件出し」を一からやり直す必要があります。場合によっては、量産機に合わせて設計図面そのものを修正しなければならない（手戻り）ことも少なくありません。</p>
+        
+        <p>これにより、開発期間が数週間から数ヶ月遅れたり、金型の修正費用が追加で発生したりと、ビジネスチャンスを逃す大きな要因となります。小松ばね工業のアプローチは、この「見えないコスト」を根本から排除するための戦略なのです。</p>
+
+        <h2>小松ばね工業の解答：「最初から量産機」でつくる! 🎯</h2>
+        <p>私たちは、「試作は量産のリハーサルではない、量産そのものである」と考えています。この哲学こそが、世界中の精密機器メーカーから選ばれ続ける理由です。</p>
+
+        <h3>試作段階から「量産と同じ条件」を徹底する理由</h3>
+        <p>小松ばね工業では、たとえ1個の試作であっても、将来的に量産を行う予定の自動成形機（コイリングマシンなど）を使用します。</p>
+        
+        <p>量産時と同じ機械、同じ治具、同じプログラムを使って試作を行うことで、その時点で「量産時に起こりうる問題」を全て洗い出すことができます。試作段階で量産適格性の確認（バリデーション）が完了しているため、お客様から量産GOのサインが出れば、即座にフル生産を開始できるのです。これは、スピードが命の現代ビジネスにおいて、極めて強力な競争優位性となります。</p>
+
+        <h3>600台以上の設備と熟練工が支える柔軟な生産体制</h3>
+        <p>この手法を実現できる背景には、私たちが保有する圧倒的な設備力があります。社内には、最新鋭のNC（数値制御）スプリング成形機から、特定の加工に特化したメカ式成形機まで、約600台以上の多種多様な設備が稼働しています。</p>
+        
+        <p>さらに、それらの機械を使いこなす熟練の技術者が、社内で独自の治具（ツール）を設計・製作します。「この形状のばねなら、あの機械がベストだ」という判断を瞬時に行い、最適な設備で試作から量産までを一貫して担当する体制が整っているのです。</p>
+
+        <h2>具体的な成功事例：精密機器業界での信頼 ✨</h2>
+        <p>私たちの「同一設備製造」の哲学は、コンマ数ミリの精度が要求される業界で特に高く評価されています。</p>
+
+        <h3>カメラから医療機器へ：大手精密メーカーとの取引実績</h3>
+        <p>私たちの技術力のルーツは、カメラのシャッター用ばねにあります。非常に小さなスペースに収まり、かつ正確な動作を何万回も繰り返す耐久性が求められる部品です。</p>
+        
+        <p>この分野で培った信頼により、私たちは長年にわたりキヤノングループ様やセイコーグループ様といった、世界をリードする企業の主要パートナーとして選ばれ続けてきました。現在では、その超精密加工技術を応用し、内視鏡やガイドワイヤーといった医療機器分野の重要保安部品も多数手がけています。</p>
+        
+        <p>これらの製品は人命に関わるため、品質のバラつきは絶対に許されません。試作段階で量産品質を確立しているからこそ、厳しい医療業界の基準もクリアできるのです。</p>
+
+        <h2>海外調達の不安を解消する品質保証体制 ⚙️</h2>
+        <p>日本品質をそのまま海外へ。私たちは、物理的な製品だけでなく、安心という価値も提供しています。</p>
+
+        <h3>ISO認証と徹底したデータ管理</h3>
+        <p>小松ばね工業は、ISO9001およびISO14001を取得しており、国際基準に基づいた厳格な品質管理体制を敷いています。</p>
+        
+        <p>試作時に決定した製造パラメーターや検査データは全て記録・保存され、数年後のリピート注文であっても、当時と全く同じ条件で製造することが可能です。これにより、「前回と何かが違う」というトラブルを未然に防ぎます。</p>
+
+        <h3>「図面通り」を忠実に再現する技術力</h3>
+        <p>私たちの誇りは、お客様から頂いた図面を忠実に再現する力です。当たり前のように聞こえるかもしれませんが、ばねは材料のロットや気温によって微妙に反発力が変わる生き物のような製品です。</p>
+        
+        <p>私たちは、3Dスキャン三次元座標測定機などの最新検査機器を駆使し、形状、寸法、荷重特性を徹底的に検証します。「図面通りのものが届く」という当たり前の安心を、米国、シンガポールをはじめとする海外のお客様にも変わらずお届けします。</p>
+
+        <h2>小松ばね工業の製品開発・試作に関するFAQ 🤝</h2>
+        <div class="faq-section">
+            <div class="faq-item">
+                <p class="faq-question">Q1. 試作は本当に1個からでも対応してもらえますか？</p>
+                <p>A1. はい、喜んで対応いたします！私たちは「小さなスプリング一個といえども、精密製品の心臓部」という考えを持っています。たった1個の試作であっても、将来の量産を見据えて最適な量産機を選定し、製造いたします。まずは開発段階からお気軽にご相談ください。</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q2. 量産機で試作すると、費用が高くなるのでは？</p>
+                <p>A2. 一見そう思われがちですが、トータルコストではむしろ安くなるケースが大半です。手作り試作に比べて初期費用は若干かかる場合がありますが、量産移行時の金型修正費や、トラブルによる手戻り工数が不要になるため、製品ライフサイクル全体で見れば大幅なコストダウンと時間短縮につながります。</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q3. 海外（米国、シンガポールなど）への発送や取引は可能ですか？</p>
+                <p>A3. もちろんです。私たちはインドネシアに現地法人（PT. KOMATSU BANE INDONESIA）を持つなど、海外展開の経験も豊富です。日本本社からの輸出はもちろん、海外拠点との連携も含め、お客様のサプライチェーンに最適な形での納品体制をご提案させていただきます。</p>
+            </div>
+        </div>
+
+        <h2>まとめ：リスクのない量産移行でビジネスを加速させよう! 🚀</h2>
+        <p>ここまで、小松ばね工業独自の「試作から量産まで同一設備で製造する」という品質哲学について解説してきました。</p>
+        
+        <ol>
+            <li>試作と量産の品質乖離（ゴールデン・サンプル問題）を完全回避</li>
+            <li>600台以上の豊富な設備で、最適な量産機を最初から選定</li>
+            <li>量産移行時の手戻りをなくし、開発リードタイムを劇的に短縮</li>
+            <li>キヤノン様やセイコー様など、世界的大手企業との長年の取引実績</li>
+            <li>ISO認証に基づく徹底した品質管理とデータ保存</li>
+        </ol>
+        
+        <p>「日本の高品質な部品を使いたいが、量産時のトラブルが怖い」「開発スピードを上げたい」──そうお考えの皆様にとって、小松ばね工業は最高のパートナーになれると確信しています。私たちは単なる部品メーカーではなく、お客様の製品開発を成功に導くための伴走者です。</p>
+        
+        <p>試作図面ができた段階、あるいは構想段階からでも構いません。まずは私たちにご相談ください。確かな技術と実績で、あなたのビジネスの成功を強力にバックアップします！</p>
+    </article>
+
+    <div class="cta-section">
+        <h2>お問い合わせはこちら</h2>
+        <p>ばねの試作・量産に関するご相談・お見積りなど、お気軽にお問い合わせください</p>
+        <a href="https://www.komatsubane.com/contact_us/" class="cta-button">お問い合わせフォームへ</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>製品紹介</h3>
+                <ul>
+                    <li><a href="https://www.komatsubane.com/products/">ばねの種類</a></li>
+                    <li><a href="https://www.komatsubane.com/products/">製品</a></li>
+                    <li><a href="https://www.komatsubane.com/products/">用途</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>会社紹介</h3>
+                <ul>
+                    <li><a href="https://www.komatsubane.com/company/">会社概要</a></li>
+                    <li><a href="https://www.komatsubane.com/company/">設備</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>情報</h3>
+                <ul>
+                    <li><a href="https://www.komatsubane.com/information/">新着情報</a></li>
+                    <li><a href="https://www.komatsubane.com/recruit/">求人情報</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>お問い合わせ</h3>
+                <ul>
+                    <li><a href="tel:03-3743-0231">TEL: 03-3743-0231（代）</a></li>
+                    <li><a href="tel:03-3743-0235">FAX: 03-3743-0235</a></li>
+                    <li>〒143-0013<br>東京都大田区大森南5丁目3番18号</li>
+                    <li><a href="https://www.komatsubane.com/contact_us/">お問い合わせフォーム</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 小松ばね工業株式会社. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
